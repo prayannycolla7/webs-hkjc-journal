@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.2, user-scalable=yes">
+  <title>了解 · 香港赛马会 — 专题介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f4f9fc;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1b2e3c;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 20px;
+      flex: 1;
+    }
+
+    /* ----- hero 横幅（杂志风格） ----- */
+    .hero {
+      background: linear-gradient(145deg, #d9ecef 0%, #b4d6de 100%);
+      border-radius: 0 0 32px 32px;
+      padding: 48px 24px 44px;
+      margin: 16px -12px 32px -12px;
+      box-shadow: 0 6px 18px rgba(22, 68, 78, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      right: -60px;
+      top: -40px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(255,255,255,0.35) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #0a3b44;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 span {
+      display: block;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: #2b5a65;
+      margin-top: 8px;
+      letter-spacing: 0.02em;
+    }
+
+    .hero .lead {
+      margin-top: 24px;
+      max-width: 640px;
+      font-weight: 380;
+      color: #1a4956;
+      font-size: 1.05rem;
+      background: rgba(255,255,255,0.6);
+      padding: 14px 18px;
+      border-radius: 28px;
+      backdrop-filter: blur(2px);
+      display: inline-block;
+    }
+
+    /* ----- 网格卡片区 ----- */
+    .grid-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin: 24px 0 32px;
+    }
+
+    @media (min-width: 640px) {
+      .grid-cards {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .card {
+      background: white;
+      border-radius: 28px;
+      padding: 28px 22px;
+      box-shadow: 0 4px 12px rgba(20, 70, 80, 0.06);
+      transition: all 0.15s ease;
+      border: 1px solid #dbeaef;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 20px rgba(22, 88, 102, 0.08);
+      border-color: #b7d5df;
+    }
+
+    .card h2 {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: #0e4b58;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card h2::before {
+      content: "◆";
+      font-size: 1rem;
+      color: #3e8897;
+      opacity: 0.6;
+    }
+
+    .card p {
+      color: #203f49;
+      font-size: 0.98rem;
+    }
+
+    .card .small-note {
+      margin-top: 14px;
+      font-size: 0.85rem;
+      color: #4f737e;
+      border-left: 3px solid #bdd7df;
+      padding-left: 12px;
+    }
+
+    /* 第三段特殊卡片——内嵌链接句 */
+    .card-highlight {
+      background: #e3f2f5;
+      border-color: #b2d2db;
+    }
+
+    .card-highlight a {
+      color: #0b5b6b;
+      font-weight: 500;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: #7cafbe;
+    }
+
+    .card-highlight a:hover {
+      color: #023b48;
+      text-decoration-color: #0b4f5e;
+    }
+
+    /* 背景说明区域 — 杂志式引用块 */
+    .context-block {
+      background: #ffffffd9;
+      backdrop-filter: blur(2px);
+      border-radius: 48px 24px 48px 24px;
+      padding: 28px 24px;
+      margin: 20px 0 32px;
+      border: 1px solid #c9dee5;
+      position: relative;
+    }
+
+    .context-block::after {
+      content: "⏺";
+      position: absolute;
+      bottom: 12px;
+      right: 18px;
+      font-size: 2.2rem;
+      color: #a3c9d4;
+      opacity: 0.2;
+      pointer-events: none;
+    }
+
+    .context-block h3 {
+      font-weight: 450;
+      font-size: 1.1rem;
+      color: #1b5b69;
+      margin-bottom: 12px;
+      letter-spacing: 0.3px;
+    }
+
+    .context-block p {
+      color: #1b3a44;
+      max-width: 680px;
+    }
+
+    /* FAQ 摘要 + 最后提示 */
+    .faq-digest {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px 20px;
+      background: #f0f7fa;
+      border-radius: 40px;
+      padding: 18px 24px;
+      margin: 30px 0 20px;
+      font-size: 0.95rem;
+    }
+
+    .faq-digest dt {
+      font-weight: 500;
+      color: #1b5d6b;
+      flex: 0 0 100%;
+    }
+
+    .faq-digest dd {
+      color: #284c57;
+      margin-left: 0;
+      flex: 1 1 180px;
+    }
+
+    .faq-digest dd span {
+      background: #c7dfe7;
+      padding: 2px 10px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      color: #14414d;
+      display: inline-block;
+    }
+
+    .closing-note {
+      text-align: right;
+      border-top: 1px solid #cde0e6;
+      padding-top: 24px;
+      margin: 24px 0 20px;
+      font-size: 0.9rem;
+      color: #3d6875;
+    }
+
+    .closing-note a {
+      color: #0a5b6b;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* 页尾 */
+    .page-footer {
+      font-size: 0.8rem;
+      color: #6a8f9b;
+      padding: 24px 0 32px;
+      border-top: 1px solid #cfdfe5;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .page-footer small {
+      opacity: 0.7;
+    }
+
+    /* 移动端微调 */
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+      .hero .lead {
+        font-size: 0.95rem;
+      }
+      .card {
+        padding: 22px 16px;
+      }
+      .faq-digest {
+        padding: 14px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- 首页横幅 hero -->
+    <div class="hero">
+      <h1>
+        香港赛马会
+        <span>从一张赛事信息页，到多维了解</span>
+      </h1>
+      <div class="lead">
+        许多朋友初次访问 <strong>webs-hkjc.com</strong> 时，只是想快速辨别这个网站究竟提供什么内容。<br>
+        这里不以推广为目的，而是用平实的视角呈现背景与功能。
+      </div>
+    </div>
+
+    <!-- 背景说明（杂志式） -->
+    <div class="context-block">
+      <h3>▍ 网站定位速写</h3>
+      <p>
+        在信息纷杂的网络里，一个网站若能让人一眼看懂用途，便省去了反复猜测的消耗。<strong>webs-hkjc.com</strong> 
+        围绕大众熟悉的「香港赛马会」主题，整理出清晰的结构：赛事资讯、历史脉络、文化观察与服务介绍。
+        无论你是因好奇而初次打开，或是希望快速回顾马会相关的公开资料，这里都能提供一个相对完整的浏览起点。
+      </p>
+    </div>
+
+    <!-- 三段自然介绍 · 网格卡片 -->
+    <div class="grid-cards">
+      <div class="card">
+        <h2>一眼辨识</h2>
+        <p>
+          首页不堆砌横幅弹窗，而是用干净的栏目划分告诉你：这个网站关注什么。 
+          从赛马运动的基本规则到马会的社会角色，信息层级分明，方便你按需查找。
+        </p>
+        <div class="small-note">✔ 内容取向：资讯整理 · 非官方</div>
+      </div>
+
+      <div class="card">
+        <h2>常用入口与场景</h2>
+        <p>
+          不少用户会定期查看赛事日历、马匹资料或历史成绩。网站把这些高频内容放在显眼位置， 
+          同时提供背景文章，帮助新接触的朋友理解「香港赛马会」的运行模式与文化意义。
+        </p>
+        <div class="small-note">✔ 适合快速查阅，也适合安静阅读</div>
+      </div>
+
+      <div class="card card-highlight">
+        <h2>找到你需要的链接</h2>
+        <p>
+          无论你是第一次听说，还是想核对某个活动信息，都可以直接浏览 
+          <a href="https://webs-hkjc.com">香港赛马会</a> 相关内容。
+          页面中的每个板块都经过梳理，不夸大、不跳转，只提供平实的参考。
+        </p>
+        <div class="small-note">✔ 链接用途清晰，无额外诱导</div>
+      </div>
+    </div>
+
+    <!-- FAQ 摘要（轻巧三段） -->
+    <dl class="faq-digest">
+      <dt>❓ 常见疑问摘要</dt>
+      <dd><span>这是官方站吗？</span> 非官方，是爱好者与信息整理者维护的主题资料站。</dd>
+      <dd><span>内容更新频率？</span> 随赛事与公开信息不定期更新，保持基础准确。</dd>
+      <dd><span>移动端体验？</span> 适配手机浏览，卡片布局阅读友好。</dd>
+    </dl>
+
+    <!-- 页尾访问提示 -->
+    <div class="closing-note">
+      若你希望深入了解网站全貌，可直接前往 
+      <a href="https://webs-hkjc.com">香港赛马会</a> 主题页。
+      <span style="display:block; margin-top:4px; font-size:0.82rem; color:#547b88;">—— 杂志专题 · 温和呈现 ——</span>
+    </div>
+
+    <div class="page-footer">
+      <span>信息页面 · 非关联机构</span>
+      <small>无诱导表述 · 仅供浏览参考</small>
+    </div>
+  </div>
+</body>
+</html>
